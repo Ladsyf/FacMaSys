@@ -1,0 +1,21 @@
+<h1>Login</h1>
+
+{% if messages %}
+<ul class="messages"></ul>
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<form action = "{% url 'validate-login' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+
+    <br>
+    <input type="text" name="password" id="" placeholder="password" required>
+    <br>
+    <input type="submit" value="Login">
+</form>
+<a href = "{% url 'register' %}">Register</a>
